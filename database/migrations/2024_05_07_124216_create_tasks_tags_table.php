@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('tasks_tags', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignKey('task_id');
-            $table->foreignKey('tag_id');
+            $table->foreignId('task_id')->constrained('tasks');
+            $table->foreignId('tag_id')->constrained('tags');
         });
     }
 

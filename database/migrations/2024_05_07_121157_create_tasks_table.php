@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->title();
-            $table->content();
-            $table->priority();
-            $table->severity();
-            $table->progress();
-            $table->deadline();
-            $table->foreignKey('user_id');
+            $table->string('title');
+            $table->text('content');
+            $table->string('priority');
+            $table->string('severity');
+            $table->integer('progress');
+            $table->date('deadline');
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 
