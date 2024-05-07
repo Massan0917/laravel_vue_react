@@ -15,6 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->title();
+            $table->content();
+            $table->priority();
+            $table->severity();
+            $table->progress();
+            $table->deadline();
+            $table->foreignKey('user_id');
         });
     }
 
