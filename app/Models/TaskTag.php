@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TasksTags extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'task_tag_id';
+    protected $foreignKey = ['task_id', 'tag_id'];
 }
