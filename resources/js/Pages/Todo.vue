@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                 <td>Ohio</td>
-                <td>Columbus</td>
+                <td>Columbus</td>-
                 </tr>
                 <tr>
                 <td>Michigan</td>
