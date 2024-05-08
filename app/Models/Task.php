@@ -12,5 +12,4 @@ class Task extends Model
     protected $primaryKey = 'task_id';
     protected $fillable = ['title', 'content', 'priority', 'severity', 'progress'];
     protected $dates = ['deadline'];
-    protected $foreignKey = 'user_id';
 }

@@ -10,6 +10,5 @@ class Tag extends Model
     use HasFactory;
 
     protected $primaryKey = 'tag_id';
-    protected $fillable = 'tag_name';
-    protected $foreignKey = 'user_id';
+    protected $fillable = ['tag_name'];
 }

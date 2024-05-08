@@ -3,8 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Task;
+use App\Models\Tag;
+use App\Models\TaskTag;
 use Illuminate\Database\Seeder;
+
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +20,28 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Massan',
+        ]);
+
+        $deadline = Carbon::createFromFormat('Y-m-d', '2024-12-31')->format('Y-m-d');
+        Task::factory()->create([
+            'title' => 'Task1',
+            'content' => 'Content1',
+            'priority' => '高',
+            'severity' => '高',
+            'progress' => '未着手',
+            'deadline' => $deadline,
+            'user_id' => 1,
+        ]);
+
+        Tag::factory()->create([
+            'tag_name' => '個人開発',
+            'user_id' => 1,
+        ]);
+
+        TaskTag::factory()->create([
+            'task_id' => 1,
+            'tag_id' => 1,
         ]);
     }
 }

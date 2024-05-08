@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->text('content');
+            $table->string('content');
             $table->string('priority');
             $table->string('severity');
-            $table->integer('progress');
+            $table->string('progress');
             $table->date('deadline');
             $table->foreignId('user_id')->constrained('users');
         });
