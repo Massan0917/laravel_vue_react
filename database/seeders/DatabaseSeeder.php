@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Massan',
+            'email' => 'test@test.com',            
         ]);
 
         $deadline = Carbon::createFromFormat('Y-m-d', '2024-12-31')->format('Y-m-d');
