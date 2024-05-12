@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "",
-    "description": "サンプル",
+    "title": "todoアプリAPI",
+    "description": "増井専用todoアプリで使うAPI",
     "version": "1.0.0"
   },
   "paths": {
     "/register": {
       "post": {
-        "tags": ["register"],
-        "summary": "ユーザー登録時のAPIドキュメント",
-        "description": "ユーザー登録時のAPIドキュメント",
+        "tags": ["Todos"],
+        "summary": "todoを登録する",
+        "description": "todoを登録する",
         "parameters": [],
         "requestBody": {
           "description": "ユーザー登録時のリクエストボディ",
@@ -19,23 +19,43 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "description": "ユーザー名（255文字まで）",
+                  "title": {
+                    "description": "タスク名",
                     "type": "string",
-                    "example": "佐藤太郎"
+                    "example": "ドキュメント作成"
                   },
-                  "email": {
-                    "description": "メールアドレス（一意、255文字まで）",
-                    "type": "string",
-                    "example": "hogehoge@gmail.com"
+                  "content": {
+                    "description": "タスク内容",
+                    "type": "Text",
+                    "example": "今回行ったアプリのドキュメントを作成する"
                   },
-                  "password": {
-                    "description": "パスワード（最小8文字）",
+                  "priority": {
+                    "description": "優先度",
                     "type": "string",
-                    "example": "password"
+                    "example": "高"
+                  },
+                  "severity": {
+                    "description": "タスク重量",
+                    "type": "string",
+                    "example": "重"
+                  },
+                  "progress": {
+                    "description": "進捗",
+                    "type": "string",
+                    "example": "未着手"
+                  },
+                  "deadline": {
+                    "description": "期限",
+                    "type": "date",
+                    "example": "2021-09-30"
+                  },
+                  "user_id": {
+                    "description": "ユーザーID",
+                    "type": "integer",
+                    "example": "1"
                   }
                 },
-                "required": ["name", "email", "password"]
+                "required": ["title", "content", "priority", "severity", "progress", "deadline", "user_id"]
               }
             }
           }
@@ -57,6 +77,28 @@
                       "description": "ユーザー登録成功時のメッセージ",
                       "type": "string",
                       "example": "ユーザー登録に成功しました。"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ユーザー登録失敗時",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "description": "HTTPステータス",
+                      "type": "string",
+                      "example": "400"
+                    },
+                    "errorMessage": {
+                      "description": "ユーザー登録失敗時のメッセージ",
+                      "type": "string",
+                      "example": "ユーザー登録に失敗しました。"
                     }
                   }
                 }
