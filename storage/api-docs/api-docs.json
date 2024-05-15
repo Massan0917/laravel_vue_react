@@ -2,10 +2,117 @@
   "openapi": "3.0.0",
   "info": {
     "title": "todoアプリAPI",
-    "description": "増井専用todoアプリで使うAPI",
+    "description": "todoアプリで使うAPI",
     "version": "1.0.0"
   },
   "paths": {
+    "/get": {
+      "get": {
+        "tags": ["Todos"],
+        "summary": "todoを取得する",
+        "description": "todoを取得する",
+        "parameters": [{
+          "name": "id",
+          "in": "query",
+          "description": "ユーザーID",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "ユーザー取得成功時",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "description": "HTTPステータス",
+                      "type": "string",
+                      "example": "200"
+                    },
+                    "data": {
+                      "description": "ユーザー情報",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "タスクID",
+                            "type": "integer",
+                            "example": "1"
+                          },
+                          "title": {
+                            "description": "タスク名",
+                            "type": "string",
+                            "example": "ドキュメント作成"
+                          },
+                          "content": {
+                            "description": "タスク内容",
+                            "type": "Text",
+                            "example": "今回行ったアプリのドキュメントを作成する"
+                          },
+                          "priority": {
+                            "description": "優先度",
+                            "type": "string",
+                            "example": "高"
+                          },
+                          "severity": {
+                            "description": "タスク重量",
+                            "type": "string",
+                            "example": "重"
+                          },
+                          "progress": {
+                            "description": "進捗",
+                            "type": "string",
+                            "example": "未着手"
+                          },
+                          "deadline": {
+                            "description": "期限",
+                            "type": "date",
+                            "example": "2021-09-30"
+                          },
+                          "user_id": {
+                            "description": "ユーザーID",
+                            "type": "integer",
+                            "example": "1"
+                          }
+                        },
+                        "required": ["id", "title", "content", "priority", "severity", "progress", "deadline", "user_id"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ユーザー取得失敗時",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "description": "HTTPステータス",
+                      "type": "string",
+                      "example": "400"
+                    },
+                    "errorMessage": {
+                      "description": "ユーザー取得失敗時のメッセージ",
+                      "type": "string",
+                      "example": "ユーザー取得に失敗しました。"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/register": {
       "post": {
         "tags": ["Todos"],
@@ -99,6 +206,163 @@
                       "description": "ユーザー登録失敗時のメッセージ",
                       "type": "string",
                       "example": "ユーザー登録に失敗しました。"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/remove": {
+      "delete": {
+        "tags": ["Todos"],
+        "summary": "todoを削除する",
+        "description": "todoを削除する",
+        "parameters": [],
+        "requestBody": {
+          "description": "ユーザー削除時のリクエストボディ",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "タスクID",
+                    "type": "integer",
+                    "example": "1"
+                  }
+                },
+                "required": ["id"]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "ユーザー削除成功時",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "description": "HTTPステータス",
+                        "type": "string",
+                        "example": "200"
+                      },
+                      "successMessage": {
+                        "description": "ユーザー削除成功時のメッセージ",
+                        "type": "string",
+                        "example": "ユーザー削除に成功しました。"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "ユーザー削除失敗時",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "description": "HTTPステータス",
+                        "type": "string",
+                        "example": "400"
+                      },
+                      "errorMessage": {
+                        "description": "ユーザー削除失敗時のメッセージ",
+                        "type": "string",
+                        "example": "ユーザー削除に失敗しました。"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/edit": {
+      "put": {
+        "tags": ["Todos"],
+        "summary": "todoを編集する",
+        "description": "todoを編集する",
+        "parameters": [],
+        "requestBody": {
+          "description": "ユーザー編集時のリクエストボディ",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "タスクID",
+                    "type": "integer",
+                    "example": "1"
+                  },
+                  "title": {
+                    "description": "タスク名",
+                    "type": "string",
+                    "example": "ドキュメント作成"
+                  },
+                  "content": {
+                    "description": "タスク内容",
+                    "type": "Text",
+                    "example": "今回行ったアプリのドキュメントを作成する"
+                  },
+                  "priority": {
+                    "description": "優先度",
+                    "type": "string",
+                    "example": "高"
+                  },
+                  "severity": {
+                    "description": "タスク重量",
+                    "type": "string",
+                    "example": "重"
+                  },
+                  "progress": {
+                    "description": "進捗",
+                    "type": "string",
+                    "example": "未着手"
+                  },
+                  "deadline": {
+                    "description": "期限",
+                    "type": "date",
+                    "example": "2021-09-30"
+                  },
+                  "user_id": {
+                    "description": "ユーザーID",
+                    "type": "integer",
+                    "example": "1"
+                  }
+                },
+                "required": ["id", "title", "content", "priority", "severity", "progress", "deadline", "user_id"]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "ユーザー編集成功時",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "description": "HTTPステータス",
+                        "type": "string",
+                        "example": "200"
+                      },
+                      "successMessage": {
+                        "description": "ユーザー編集成功時のメッセージ",
+                        "type": "string",
+                        "example": "ユーザー編集に成功しました。"
+                      }
                     }
                   }
                 }
