@@ -74,10 +74,10 @@
                             "type": "date",
                             "example": "2021-09-30"
                           },
-                          "user_id": {
-                            "description": "ユーザーID",
-                            "type": "integer",
-                            "example": "1"
+                          "tags": {
+                            "description": "タグ",
+                            "type": "string",
+                            "example": "ドキュメント"
                           }
                         },
                         "required": ["id", "title", "content", "priority", "severity", "progress", "deadline", "user_id"]
