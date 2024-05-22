@@ -2,7 +2,6 @@
   import { ref } from 'vue'
   import axios from 'axios';
 
-  const drawer = ref(null)
   axios.get('api/get/1').then(response => {
     console.log(response.data);
   });
