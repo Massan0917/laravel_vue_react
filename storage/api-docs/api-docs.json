@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/get": {
+    "/get/{user-id}": {
       "get": {
         "tags": ["Todos"],
         "summary": "todoを取得する",
