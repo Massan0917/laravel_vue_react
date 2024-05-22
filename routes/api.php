@@ -2,4 +2,4 @@
 
 use App\Http\Controllers\TodoController;
 
-Route::get('/get/{id}', [TodoController::class, 'getTask']);
+Route::get('/api/get/{id}', [TodoController::class, 'getTask']);

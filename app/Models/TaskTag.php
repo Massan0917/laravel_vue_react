@@ -9,5 +9,5 @@ class TaskTag extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'task_tag_id';
+    protected $primaryKey = 'id';
 }
