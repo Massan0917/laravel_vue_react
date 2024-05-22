@@ -17,4 +17,23 @@ class TodoController extends Controller
             return response()->json(['error' => 'Task not found'], 404);
         }
     }
+
+    function registTask(Request $request){
+        // return $request;
+        // タスクを登録
+        $task = new Task;
+        $task->title = $request->title;
+        $task->content = $request->content;
+        $task->priority = $request->priority;
+        $task->severity = $request->severity;
+        $task->progress = $request->progress;
+        $task->deadline = $request->deadline;
+        $task->user_id = $request->user_id;        
+        // エラーハンドリング
+        if ($task->save()) {
+            return new TaskResource($task);
+        } else {
+            return response()->json(['error' => 'Task not saved'], 500);
+        }
+    }
 }
