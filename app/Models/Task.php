@@ -9,7 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'task_id';
+    protected $primaryKey = 'id';
     protected $fillable = ['title', 'content', 'priority', 'severity', 'progress'];
     protected $dates = ['deadline'];
 }
