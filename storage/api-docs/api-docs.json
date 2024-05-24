@@ -113,7 +113,7 @@
         }
       }
     },
-    "/register": {
+    "/api/register": {
       "post": {
         "tags": ["Todos"],
         "summary": "todoを登録する",
@@ -215,7 +215,7 @@
         }
       }
     },
-    "/remove": {
+    "/api/delete": {
       "delete": {
         "tags": ["Todos"],
         "summary": "todoを削除する",
@@ -287,7 +287,7 @@
         }
       }
     },
-    "/edit": {
+    "/api/edit": {
       "put": {
         "tags": ["Todos"],
         "summary": "todoを編集する",
