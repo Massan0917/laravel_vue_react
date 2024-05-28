@@ -2,7 +2,7 @@
 name: issueテンプレート
 about: issueのテンプレート
 title: '2024/MM/DD '
-assignees: kokochin
+assignees: masui
 
 ---
 
