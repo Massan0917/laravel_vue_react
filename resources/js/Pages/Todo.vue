@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue'
   import axios from 'axios';
-
+  import List from './Components/List.vue';
 
   const postData = ref({
     "title" : "task2",
@@ -75,6 +75,8 @@
             </v-col>
           </v-row>
         </v-container>
+
+        <list/>
 
       <button @click="registTask">タスク登録</button><br>
       <button @click="deleteTask">タスク削除</button><br>
