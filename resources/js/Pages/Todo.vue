@@ -23,24 +23,6 @@
     "deadline" : "2024-12-31",
     });
 
-  const headers = ref([
-    { title: 'タイトル' , value: 'title' },
-    { title: '内容'     , value: 'content' },
-    { title: '優先度'   , value: 'priority' },
-    { title: '進捗'     , value: 'progress' },
-    { title: '重要度'   , value: 'severity' },
-    { title: '期限'     , value: 'deadline' },
-  ]);
-
-  const todos = ref([]);
-  getTodos();
-
-  function getTodos() {
-    axios.get('api/get/1').then(response => {
-      todos.value = response.data.data;
-    });
-  }
-
   function registTask() {
     axios.post('api/register', postData.value).then(response => {
       console.log(response.data);
@@ -65,18 +47,8 @@
 
 <template>
     <body>
-        <v-container>
-          <v-row>
-            <v-col>
-              <v-data-table
-                :headers="headers"
-                :items="todos"
-              ></v-data-table>
-            </v-col>
-          </v-row>
-        </v-container>
 
-        <list/>
+      <list/>
 
       <button @click="registTask">タスク登録</button><br>
       <button @click="deleteTask">タスク削除</button><br>
