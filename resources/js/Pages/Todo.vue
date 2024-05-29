@@ -23,6 +23,15 @@
     "deadline" : "2024-12-31",
     });
 
+  const headers = ref([
+    { title: 'タイトル' , value: 'title' },
+    { title: '内容'     , value: 'content' },
+    { title: '優先度'   , value: 'priority' },
+    { title: '進捗'     , value: 'progress' },
+    { title: '重要度'   , value: 'severity' },
+    { title: '期限'     , value: 'deadline' },
+  ]);
+
   const todos = ref([]);
   getTodos();
 
@@ -56,33 +65,19 @@
 
 <template>
     <body>
-        <v-table>
-            <thead>
-                <tr  style="border-color: white; border-width: 2px;">
-                <th>タスク名</th>
-                <th>内容</th>
-                <th>優先度</th>
-                <th>重度</th>
-                <th>進捗</th>
-                <th>締め切り</th>
-                </tr>
-            </thead>
-            <tbody v-for="(todo) in todos">
-                <tr>
-                <td>{{ todo.title }}</td>
-                <td>{{ todo.content }}</td>
-                <td>{{ todo.priority }}</td>
-                <td>{{ todo.severity }}</td>
-                <td>{{ todo.progress }}</td>
-                <td>{{ todo.deadline }}</td>
-                </tr>
-            </tbody>
-        </v-table>
-      <p class="font-serif ...">The quick brown fox ...</p>
+        <v-container>
+          <v-row>
+            <v-col>
+              <v-data-table
+                :headers="headers"
+                :items="todos"
+              ></v-data-table>
+            </v-col>
+          </v-row>
+        </v-container>
 
       <button @click="registTask">タスク登録</button><br>
       <button @click="deleteTask">タスク削除</button><br>
       <button @click="editTask">タスク編集</button>
     </body>
-    
 </template>
