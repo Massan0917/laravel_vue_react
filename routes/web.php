@@ -9,7 +9,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 });
 
-Route::get('/todo',function(){
+Route::get('/vue',function(){
     return Inertia::render('Todo');
 });
 
